@@ -1,0 +1,136 @@
+﻿body {
+    font-family: Baumans;
+}
+
+@font-face {
+    font-family: "Baumans";
+    src: url(../fonts/Baumans-Regular.ttf);
+    font-style: normal;
+    font-weight: normal;
+}
+
+input[type = "email"]:disabled,
+input[type = "password"]:disabled,
+input[type = "text"]:disabled,
+select:disabled {
+    background-color: rgba(99, 110, 114, 0.4) !important;
+}
+
+h1 {
+    color: black;
+    text-align: center;
+    font-size: 35px;
+    margin-bottom: 45px;
+}
+
+.baumans {
+    font-family: Baumans;
+}
+
+.signin_box {
+    position: absolute;
+    width: 300px;
+    padding: 40px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #000;
+    box-shadow: 0px 4px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+    .signin_box input[type = "email"], 
+    .signin_box input[type = "password"], 
+    .signin_box input[type = "text"],
+    .signin_box select {
+        border: 0;
+        background: none;
+        display: block;
+        margin: 0px auto;
+        text-align: center;
+        border: 2px solid black;
+        padding: 14px 10px;
+        width: 210px;
+        outline: none;
+        color: black;
+        border-radius: 24px;
+        font-size: 14px;
+        transition-property: width, border, background-color, color;
+        transition-duration: 200ms, 200ms, 200ms, 0s;
+        transition-timing-function: ease-out;
+        color: transparent;
+        text-shadow: 0 0 0 #000;
+        margin: 12px auto;
+    }
+
+.signin_box input[type = "email"]:focus, 
+.signin_box input[type = "password"]:focus, 
+.signin_box input[type = "text"]:focus
+{
+    width: 286px;
+    border: 2px solid #2c3e50;
+}
+
+.signin_box input[type = "email"]:focus::-webkit-input-placeholder, .signin_box input[type = "password"]:focus::-webkit-input-placeholder, .signin_box input[type = "text"]:focus::-webkit-input-placeholder {
+    visibility: hidden;
+}
+
+        .signin_box input[type = "email"]:hover, 
+        .signin_box input[type = "password"]:hover, 
+        .signin_box input[type = "text"]:hover {
+            border: 2px solid #2c3e50;
+        }
+
+.signin_box input[type = "email"]:required, .signin_box input[type = "password"]:required, .signin_box input[type = "text"]:required {
+    background-color: rgba(24, 220, 255, 0.08);
+}
+
+.signin_box input[type = "email"]:invalid, .signin_box input[type = "password"]:invalid, .signin_box input[type = "text"]:invalid {
+    background-color: white;
+}
+
+.button {
+    background: none;
+    display: block;
+    margin: 2px auto;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 24px;
+    padding: 12px 8px;
+    width: 130px;
+    outline: none;
+    transition-property: width, background, color;
+    transition-duration: 150ms, 300ms, 300ms;
+    margin-top: 6px;
+}
+
+.button:hover {
+    width: 136px;
+    background: black;
+    color: white;
+}
+
+.error_message {
+    color: #c0392b;
+    text-align: center;
+    font-size: 10px;
+    margin-left: 1px;
+}
+
+.error_message:hover {
+    color: #e74c3c;
+}
+
+.error {
+    margin-left: 30px;
+    font-size: 17px;
+}
+
+.gender {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    margin-right: 30px;
+    padding: 14px 30px !important;
+    color: black !important;
+}

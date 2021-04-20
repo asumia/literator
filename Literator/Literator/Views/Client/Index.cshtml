@@ -1,0 +1,30 @@
+﻿@model ClientViewModel
+@await Html.PartialAsync("filterBlock", new filterBlockViewModel { redirect = "", clientId = Model.ClientId })
+@await Html.PartialAsync("clientfilterinfo")
+@{
+    if (Model.clients != null)
+    {
+        if (Model.clients.Count() > 0)
+        {
+            int i = 0;
+            while (i < Model.clients.Count())
+            {
+                <div class="book_info">
+                    <ul class="edit_delete listnone nodecoration">
+                        <li><a class="edit" asp-controller="Client" asp-action="Edit" asp-route-ClientId=@Model.ClientId asp-route-id="@Model.clients.ElementAt(i).id"><img src="~/images/edit.svg" alt="edit" /></a></li>
+                        <li><a class="delete" asp-controller="Client" asp-action="Delete" asp-route-ClientId=@Model.ClientId asp-route-id="@Model.clients.ElementAt(i).id"><img src="~/images/delete.svg" alt="delete" /></a></li>
+                    </ul>
+                    <div class="number"><p class="id baumans">@Model.clients.ElementAt(i).id</p></div>
+                    <div class="name"><p class="name_text baumans">@Model.clients.ElementAt(i).name</p></div>
+                    <div class="author"><p class="author_text baumans">@Model.clients.ElementAt(i).email</p></div>
+                    <div class="cost"><p class="cost_text baumans">@(Model.genders.GetGender(Model.clients.ElementAt(i).genderId))</p></div>
+                    <div class="desc ml-30"><p class="desc_text baumans">@(Model.roles.GetRole(Model.clients.ElementAt(i).id))</p></div>
+                </div>
+                i++;
+            }
+        }
+    }
+}
+<div class="addBook_block">
+    <a class="addBook_button baumans" asp-controller="Sign" asp-action="Up">Register client</a>
+</div>

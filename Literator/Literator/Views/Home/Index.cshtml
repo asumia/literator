@@ -1,0 +1,47 @@
+﻿@model HomeViewModel
+<div class="container">
+    <div class="logo">
+        <ul class="listnone">
+            <li><a asp-controller="Home" asp-action=""><img src="~/images/MainLogo.svg" alt="logo"></a></li>
+        </ul>
+    </div>
+    <div class="home">
+        <p class="welcome">Welcome dear reader!</p>
+        @{
+            if (Model.clientRole == "Admin")
+            {
+                //Добавить панель администратора с просмотром клиента
+                <a asp-controller="Catalog" asp-action="" class="header_button logout_button">Logout</a>
+            }
+            else if (Model.clientRole == "User")
+            {
+                <a asp-controller="Cart" asp-action="" asp-route-ClientId="@Model.ClientId" class="cart_button"><img src="~/images/cart.svg" alt="Cart"></a>
+                <a asp-controller="Catalog" asp-action="" class="header_button logout_button">Logout</a>
+            }
+            else
+            {
+                <a asp-controller="Sign" asp-action="In" class="header_button login_button">Log in</a>
+                <div class="line"></div>
+                <a asp-controller="Sign" asp-action="Up" class="header_button register_button">Register</a>
+            }
+        }
+    </div>
+</div>
+@await Html.PartialAsync("filterBlock", new filterBlockViewModel { clientId = Model.ClientId, redirect = "" })
+<div class="allcards">
+    <div class="card">
+        <img src="~/images/card1.svg" alt="card1">
+        <p class="card_header1">What is Literator?</p>
+        <p class="card_desc">Literator is a simple application that lets you add to cart or view  your favorite books.</p>
+    </div>
+    <div class="card">
+        <img src="~/images/card2.svg" alt="card2">
+        <p class="card_header2">How to use?</p>
+        <p class="card_desc">Find the book you need, read the description and if you like it, add it to the cart.</p>
+    </div>
+    <div class="card">
+        <img src="~/images/card3.svg" alt="card3">
+        <p class="card_header3">How useful?</p>
+        <p class="card_desc">Quickly finds the book you like by title. A collection of books based on the preferences of other users.</p>
+    </div>
+</div>

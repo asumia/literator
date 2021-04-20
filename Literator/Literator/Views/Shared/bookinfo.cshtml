@@ -1,0 +1,24 @@
+﻿@model PageAndBooksViewModel
+
+<div class="book_info">
+    @{
+        if (Model.clientRole == "Admin")
+        {
+            <ul class="edit_delete listnone nodecoration">
+                <li><a class="edit" asp-controller="Edit" asp-action="" asp-route-name="@(Model.books.ElementAt(Model.page).name)" asp-route-author="@(Model.books.ElementAt(Model.page).author)" asp-route-ClientId="@Model.ClientId"><img src="~/images/edit.svg" alt="edit" /></a></li>
+                <li><a class="delete" asp-controller="Catalog" asp-action="Delete" asp-route-name="@(Model.books.ElementAt(Model.page).name)" asp-route-author="@(Model.books.ElementAt(Model.page).author)" asp-route-ClientId="@Model.ClientId"><img src="~/images/delete.svg" alt="delete" /></a></li>
+            </ul>
+        }
+        else if(Model.clientRole == "User")
+        {
+            <ul class="edit_delete listnone nodecoration">
+                <li><a class="delete addToCart" asp-controller="Cart" asp-action="AddToCart" asp-route-ClientId="@Model.ClientId" asp-route-bookId="@(Model.books.ElementAt(Model.page).id)"><img class="addToCartimg" src="~/images/addToCart.svg" alt="delete" /></a></li>
+            </ul>
+        }
+    }
+    <div class="number"><p class="id baumans">@(Model.id + 1)</p></div>
+    <div class="name"><p class="name_text baumans">@Model.books.ElementAt(Model.page).name</p></div>
+    <div class="author"><p class="author_text baumans">@Model.books.ElementAt(Model.page).author</p></div>
+    <div class="cost"><p class="cost_text baumans">@(Model.books.ElementAt(Model.page).price.ToString() + '₽')</p></div>
+    <div class="desc"><p class="desc_text baumans">@Model.books.ElementAt(Model.page).description</p></div>
+</div>

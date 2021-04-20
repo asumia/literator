@@ -1,0 +1,30 @@
+﻿@{
+    Layout = null;
+}
+@model EditBookViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit book</title>
+    <link rel="stylesheet" href="~/css/addbookstyle.css">
+    <link rel="shortcut icon" href="~/images/siteicon.svg" type="image/svg">
+</head>
+<body>
+    <form class="box" asp-action="Index" asp-route-ClientId=@Model.ClientId asp-route-id="@Model.id" method="post">
+        <h1>Edit book</h1>
+        <input asp-for="@Model.book.name" class="baumans" type="text" placeholder="Book name" autocomplete="off" required>
+        <input asp-for="@Model.book.author" class="baumans" type="text" placeholder="Author" autocomplete="off" required>
+        <input asp-for="@Model.book.price" class="baumans" type="number" placeholder="   Price" autocomplete="off" min="1" max="999999" required>
+        <input asp-for="@Model.book.description" class="baumans" type="text" placeholder="Description (optional)" autocomplete="off" />
+        <div class="checkboxes">
+            <input asp-for="@Model.book.isNew" class="checkbox" type="checkbox" />Novetly
+            <input asp-for="@Model.book.isForSale" class="checkbox" type="checkbox" />Sale
+            <input asp-for="@Model.book.isBestSeller" class="checkbox" type="checkbox" />Bestseller
+        </div>
+        <label class="baumans error">@ViewBag.BookError</label>
+        <input class="baumans button" type="submit" value="Edit">
+    </form>
+</body>
+</html>

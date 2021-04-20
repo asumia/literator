@@ -1,0 +1,32 @@
+﻿@model RoleViewModel
+@await Html.PartialAsync("filterBlock", new filterBlockViewModel { redirect = "", clientId = Model.ClientId })
+<div class="navblock3">
+    <nav class="nav2">
+        <p class="dib baumans24-30 nnumber">Id</p>
+        <p class="dib baumans24-30 nname">Name</p>
+    </nav>
+</div>
+@{
+    if (Model.roles != null)
+    {
+        if (Model.roles.Count() > 0)
+        {
+            int i = 0;
+            while (i < Model.roles.Count())
+            {
+                <div class="book_info">
+                    <ul class="edit_delete listnone nodecoration">
+                        <li><a class="edit" asp-controller="Role" asp-action="Edit" asp-route-ClientId=@Model.ClientId asp-route-id="@Model.roles.ElementAt(i).id"><img src="~/images/edit.svg" alt="edit" /></a></li>
+                        <li><a class="delete" asp-controller="Role" asp-action="Delete" asp-route-ClientId=@Model.ClientId asp-route-id="@Model.roles.ElementAt(i).id"><img src="~/images/delete.svg" alt="delete" /></a></li>
+                    </ul>
+                    <div class="number"><p class="id baumans">@Model.roles.ElementAt(i).id</p></div>
+                    <div class="name"><p class="name_text baumans">@Model.roles.ElementAt(i).name</p></div>
+                </div>
+                i++;
+            }
+        }
+    }
+}
+<div class="addBook_block">
+    <a class="addBook_button baumans" asp-controller="Role" asp-action="Add" asp-route-ClientId=@Model.ClientId>Add role</a>
+</div>

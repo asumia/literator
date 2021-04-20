@@ -1,0 +1,23 @@
+﻿@model PageAndBooksViewModel
+@{
+    @await Html.PartialAsync("header", Model.search)
+    @await Html.PartialAsync("filterBlock", new filterBlockViewModel { clientId = Model.ClientId, redirect = Model.redirectTo })
+    if (Model.books.Count() != 0)
+    {
+        @await Html.PartialAsync("filterinfo")
+        @await Html.PartialAsync("showBooks", new PageAndBooksViewModel { page = Model.page, books = Model.books, ClientId = Model.ClientId, clientRole = Model.clientRole })
+        if (Model.redirectTo.Contains("Catalog?") && Model.clientRole == "Admin") //Было Catalog?page
+        {
+            @await Html.PartialAsync("addBook", Model.ClientId);
+            @await Html.PartialAsync("navigation", new ObjectsCountViewModel { page = Model.page, bookscount = Model.books.Count(), clientRole = Model.clientRole, ClientId = Model.ClientId, allBooksCount = Model.allBooksCount, redirectTo = Model.redirectTo, nameOfClass = "navigation_lastpage" })
+        }
+        else
+            @await Html.PartialAsync("navigation", new ObjectsCountViewModel { page = Model.page, bookscount = Model.books.Count(), clientRole = Model.clientRole, ClientId = Model.ClientId, allBooksCount = Model.allBooksCount, redirectTo = Model.redirectTo, nameOfClass = "navigation" })
+        }
+    else
+    {
+        @await Html.PartialAsync("noFound")
+        if (Model.clientRole == "Admin" && Model.redirectTo.Contains("Catalog") && !Model.redirectTo.Contains("search"))
+            @await Html.PartialAsync("addBook", Model.ClientId);
+    }
+}

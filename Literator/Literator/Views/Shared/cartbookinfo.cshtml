@@ -1,0 +1,17 @@
+﻿@model PageAndBooksViewModel
+
+<div class="book_info">
+    @{
+        if (Model.clientRole == "User" && Model.books != null)
+        {
+            <ul class="edit_delete listnone nodecoration">
+                <li><a class="delete" asp-controller="Cart" asp-action="Delete" asp-route-ClientId=@Model.ClientId asp-route-bookId="@Model.books.ElementAt(Model.page).id"><img src="~/images/delete.svg" alt="delete" /></a></li>
+            </ul>
+        }
+    }
+    <div class="number"><p class="id baumans">@(Model.id + 1)</p></div>
+    <div class="name"><p class="name_text baumans">@Model.books.ElementAt(Model.page).name</p></div>
+    <div class="author"><p class="author_text baumans">@Model.books.ElementAt(Model.page).author</p></div>
+    <div class="cost"><p class="cost_text baumans">@(Model.books.ElementAt(Model.page).price.ToString() + '₽')</p></div>
+    <div class="desc"><p class="desc_text baumans">@Model.books.ElementAt(Model.page).description</p></div>
+</div>

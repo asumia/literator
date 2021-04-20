@@ -1,0 +1,22 @@
+﻿@{
+    Layout = null;
+}
+@model RoleViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+    <link rel="stylesheet" href="~/css/signstyle.css">
+    <link rel="shortcut icon" href="~/images/siteicon.svg" type="image/svg">
+</head>
+<body>
+    <form class="signin_box" asp-action="Edit" asp-route-ClientId="@Model.ClientId" asp-route-id="@Model.role.id" method="post">
+        <h1>Edit</h1>
+        <input asp-for="@Model.role.name" class="baumans" type="text" placeholder="Role name" autocomplete="off" required />
+        <label class="baumans error">@ViewBag.Error</label>
+        <input class="baumans button" type="submit" value="Edit">
+    </form>
+</body>
+</html>

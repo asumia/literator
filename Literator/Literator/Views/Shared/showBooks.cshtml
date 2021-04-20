@@ -1,0 +1,13 @@
+﻿@model PageAndBooksViewModel 
+
+@{
+    int i = 0;
+    if (i < Model.books.Count())
+    {
+        while (i < Model.books.Count())
+        {
+            @await Html.PartialAsync("bookinfo", new PageAndBooksViewModel { id = (Model.page - 1) * 6 + i, page = i, books = Model.books, clientRole = Model.clientRole, ClientId = Model.ClientId});
+            i++;
+        }
+    }
+}
