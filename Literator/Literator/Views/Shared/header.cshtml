@@ -1,0 +1,46 @@
+﻿@model Search
+
+@{
+    int? roleRouteParam;
+    if (Model == null)
+        roleRouteParam = null;
+    else
+        roleRouteParam = Model.ClientId;
+}
+
+<div class="container">
+    <div class="logo">
+        <ul class="listnone">
+            <li><a asp-controller="Home" asp-action="" asp-route-Clientid="@Model.ClientId"><img src="~/images/MainLogo.svg" alt="logo"></a></li>
+        </ul>
+    </div>
+    <div class="search_field">
+        <img class="search_img" src="~/images/loupe.svg" alt="srch">
+        <form class="search_form" method="post" asp-controller="Catalog" asp-action="Index" asp-route-ClientId=@roleRouteParam>
+            <input asp-for="searchText" type="text" class="search_text" maxlength="74" placeholder="Search of..." required>
+            <input type="submit" class="header_button search_button" value="Search">
+        </form>
+        @{
+            if (Model.clientRole == "Admin")
+            {
+                <a asp-controller="Client" asp-action="Index" asp-route-ClientId="@Model.ClientId" class="header_button additional_buttons client_button">Clients</a>
+                <a asp-controller="Role" asp-action="Index" asp-route-ClientId="@Model.ClientId" class="header_button additional_buttons role_button">Roles</a>
+                <a asp-controller="Gender" asp-action="Index" asp-route-ClientId="@Model.ClientId" class="header_button additional_buttons gender_button">Genders</a>
+                <a asp-controller="Catalog" asp-action="" class="header_button logout_button">Logout</a>
+            }
+            else if (Model.clientRole == "User")
+            {
+                <a asp-controller="Cart" asp-action="" asp-route-ClientId="@Model.ClientId" class="cart_button"><img src="~/images/cart.svg" alt="Cart"></a>
+                <a asp-controller="Catalog" asp-action="" class="header_button logout_button">Logout</a>
+            }
+            else
+            {
+                <a asp-controller="Sign" asp-action="In" class="header_button login_button">Log in</a>
+                <div class="line"></div>
+                <a asp-controller="Sign" asp-action="Up" class="header_button register_button">Register</a>
+            }
+
+        }
+
+    </div>
+</div>

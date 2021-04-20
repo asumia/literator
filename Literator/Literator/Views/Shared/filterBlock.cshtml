@@ -1,0 +1,41 @@
+﻿@model filterBlockViewModel
+
+<div class="navblock">
+    <nav class="nav">
+        @{
+            if (Model.redirect.Contains("Sale"))
+            {
+                <a class="baumans25-30 nodecoration nav_link chosen dib filter catalog" asp-controller="Catalog" asp-action="Sale" asp-route-page="1" asp-route-ClientId=@Model.clientId>Sale</a>
+                <div class="dib catalog_line filter"></div>
+                <a class="baumans25-30 nodecoration nav_link dib ml-17 filter filter1" asp-controller="Catalog" asp-action="" asp-route-page="1" asp-route-ClientId=@Model.clientId>Catalog</a>
+                <a class="baumans25-30 nodecoration nav_link dib filter filter2" asp-controller="Catalog" asp-action="Novetly" asp-route-page="1" asp-route-ClientId=@Model.clientId>Novetly</a>
+                <a class="baumans25-30 nodecoration nav_link dib filter filter3" asp-controller="Catalog" asp-action="Bestsellers" asp-route-page="1" asp-route-ClientId=@Model.clientId>Bestsellers</a>
+            }
+            else if (Model.redirect.Contains("Novetly"))
+            {
+                <a class="baumans25-30 nodecoration nav_link chosen dib filter catalog" asp-controller="Catalog" asp-action="Novetly" asp-route-page="1" asp-route-ClientId=@Model.clientId>Novetly</a>
+                <div class="dib catalog_line filter"></div>
+                <a class="baumans25-30 nodecoration nav_link dib ml-17 filter filter1" asp-controller="Catalog" asp-action="" asp-route-page="1" asp-route-ClientId=@Model.clientId>Catalog</a>
+                <a class="baumans25-30 nodecoration nav_link dib filter filter2" asp-controller="Catalog" asp-action="Sale" asp-route-page="1" asp-route-ClientId=@Model.clientId>Sale</a>
+                <a class="baumans25-30 nodecoration nav_link dib filter filter3" asp-controller="Catalog" asp-action="Bestsellers" asp-route-page="1" asp-route-ClientId=@Model.clientId>Bestsellers</a>
+            }
+            else if (Model.redirect.Contains("Bestseller"))
+            {
+                <a class="baumans25-30 nodecoration nav_link chosen dib filter catalog" asp-controller="Catalog" asp-action="Bestsellers" asp-route-page="1" asp-route-ClientId=@Model.clientId>Bestsellers</a>
+                <div class="dib catalog_line filter"></div>
+                <a class="baumans25-30 nodecoration nav_link dib ml-17 filter filter1" asp-controller="Catalog" asp-action="" asp-route-page="1" asp-route-ClientId=@Model.clientId>Catalog</a>
+                <a class="baumans25-30 nodecoration nav_link dib filter filter2" asp-controller="Catalog" asp-action="Novetly" asp-route-page="1" asp-route-ClientId=@Model.clientId>Novetly</a>
+                <a class="baumans25-30 nodecoration nav_link dib filter filter3" asp-controller="Catalog" asp-action="Sale" asp-route-page="1" asp-route-ClientId=@Model.clientId>Sale</a>
+            }
+            else
+            {
+                <a class="baumans25-30 nodecoration nav_link chosen dib filter catalog" asp-controller="Catalog" asp-action="" asp-route-page="1" asp-route-ClientId=@Model.clientId>Catalog</a>
+                <div class="dib catalog_line filter"></div>
+                <a class="baumans25-30 nodecoration nav_link dib ml-17 filter filter1" asp-controller="Catalog" asp-action="Sale" asp-route-page="1" asp-route-ClientId=@Model.clientId>Sale</a>
+                <a class="baumans25-30 nodecoration nav_link dib filter filter2" asp-controller="Catalog" asp-action="Novetly" asp-route-page="1" asp-route-ClientId=@Model.clientId>Novetly</a>
+                <a class="baumans25-30 nodecoration nav_link dib filter filter3" asp-controller="Catalog" asp-action="Bestsellers" asp-route-page="1" asp-route-ClientId=@Model.clientId>Bestsellers</a>
+            }
+        }
+
+    </nav>
+</div>

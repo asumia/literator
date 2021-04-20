@@ -1,0 +1,35 @@
+﻿@model ObjectsCountViewModel
+
+@{ 
+    int pagescount = Model.allBooksCount / 6;
+    double d = (double)(Model.allBooksCount % 6) / 10;
+    int ceiling = (int)Math.Ceiling(d);
+
+    string catalog = Model.redirectTo;
+    string hrefToTheBegining = catalog + "1";
+    string hrefleft = catalog + (Model.page > 1 ? (Model.page - 1).ToString() : Model.page.ToString());
+    string hrefright = catalog + (Model.page < pagescount + ceiling ? (Model.page + 1).ToString() : Model.page.ToString());
+    string hrefToTheEnd = "";
+    if (pagescount + ceiling != 0)
+        hrefToTheEnd = catalog + (pagescount + ceiling).ToString();
+    else
+        hrefToTheEnd = catalog + "1";
+
+    if (Model.ClientId != null)
+    {
+        hrefToTheBegining += "&ClientId=" + Model.ClientId;
+        hrefleft += "&ClientId=" + Model.ClientId;
+        hrefright += "&ClientId=" + Model.ClientId;
+        hrefToTheEnd += "&ClientId=" + Model.ClientId;
+    }
+}
+
+<div class="navigation_block">
+    <ul class=@Model.nameOfClass>
+        <li><a href=@hrefToTheBegining><img class="jump" src="~/images/tothebegining.svg" alt="To the begining"></a></li>
+        <li><a href=@hrefleft class="left_arrow"><img class="jump" src="~/images/left_arrow.svg" alt="back"></a></li>
+        <li><p class="page_number baumans">@Model.page</p></li>
+        <li><a href=@hrefright class="right_arrow"><img class="jump" src="~/images/right_arrow.svg" alt="arrow forward"></a></li>
+        <li><a href=@hrefToTheEnd><img class="jump" src="~/images/totheend.svg" alt="To the end"></a></li>
+    </ul>
+</div>

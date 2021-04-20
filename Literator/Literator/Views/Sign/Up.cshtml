@@ -1,0 +1,30 @@
+﻿@{
+    Layout = null;
+}
+@model RegViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up</title>
+    <link rel="stylesheet" href="~/css/signstyle.css">
+    <link rel="shortcut icon" href="~/images/siteicon.svg" type="image/svg">
+</head>
+<body>
+    <form class="signin_box" asp-action="Up" method="post">
+        <h1>Sign up</h1>
+        <input asp-for="@Model.client.name" class="baumans" type="text" placeholder="Your name" autocomplete="off" required />
+        <input asp-for="@Model.client.email" class="baumans" type="email" placeholder="email@example.com" autocomplete="off" required>
+        <input asp-for="@Model.client.password" class="baumans" type="password" placeholder="Password" autocomplete="off" required>
+        <select asp-for="@Model.client.gender" class="baumans gender">
+            @foreach(var gender in Model.genders.genders)
+            {
+                <option>@gender.name</option>
+            }
+        </select>
+        <label class="baumans error">@ViewBag.ClientRegError</label>
+        <input class="baumans button" type="submit" value="Sign up">
+    </form>
+</body>
+</html>

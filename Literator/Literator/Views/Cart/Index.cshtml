@@ -1,0 +1,19 @@
+﻿@model CartViewModel
+@await Html.PartialAsync("filterBlock", new filterBlockViewModel { redirect = "", clientId = Model.ClientId })
+@await Html.PartialAsync("filterinfo")
+@{
+    if (Model.books != null)
+    {
+        if (Model.books.Count() > 0)
+        {
+            int i = 0;
+            while (i < Model.books.Count())
+            {
+                @await Html.PartialAsync("cartbookinfo", new PageAndBooksViewModel { id = i, page = i, books = Model.books, clientRole = "User", ClientId = Model.ClientId });
+                i++;
+            }
+        }
+    }
+    else
+        @await Html.PartialAsync("noFound")
+}
