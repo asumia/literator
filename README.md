@@ -1,1 +1,1 @@
-# Project for the discipline "Applied programming languages"
+## Project for the discipline "Applied programming languages"
